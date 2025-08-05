@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>By Niloufar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: #1e1e1e;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #1e1e1e;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #f4d400;
+    }
+
+    .hero {
+      background: linear-gradient(to right, rgba(13, 27, 42, 0.95) 30%, rgba(13, 27, 42, 0.4) 80%), url("image/image/profile2.jpg") no-repeat center center/cover;
+      color: white;
+      padding: 80px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 500px;
+      margin-top: 80px;
+    }
+
+    .hero .content {
+        max-width: 800px;
+  padding: 60px 80px;
+    }
+
+    .hero h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .hero h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .hero .btn {
+      background-color: #002d62;
+      color: #fff;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero .btn:hover {
+      background-color: #004a99;
+    }
+
+    .about {
+      padding: 80px 20px 80px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .about img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .about .text {
+      max-width: 600px;
+      flex: 1 1 300px;
+    }
+
+    .about h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      color: #f4d400;
+      font-weight: bold;
+    }
+
+    .badge {
+      background-color: #f4d400;
+      padding: 10px;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    /* Gallery Section */
+
+    .gallery {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto 80px auto;
+    }
+
+    .gallery h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 40px;
+      color: #002d62;
+      font-weight: 700;
+    }
+
+    /* Tabs - Minimal style without borders or boxes */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      font-size: 18px;
+      font-weight: 600;
+      color: #777;
+      cursor: pointer;
+      padding: 5px 0;
+      transition: color 0.3s ease;
+    }
+
+    .tab-btn:hover {
+      color: #002d62;
+    }
+
+    .tab-btn.active {
+      color: #f4d400;
+      border-bottom: 2px solid #f4d400;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    /* Category title */
+    .category-title {
+      grid-column: 1 / -1;
+      font-size: 24px;
+      font-weight: 700;
+      color: #002d62;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Gallery Items */
+    .gallery-item {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-item h3 {
+      padding: 10px;
+      font-size: 16px;
+      color: #002d62;
+      font-weight: 700;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about {
+        flex-direction: column;
+      }
+    }
+
+    footer {
+      background-color: #002d62;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    footer h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #f4d400;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>By Niloufar.</h1>
+    <nav>
+      <a href="#" class="active">Home</a>
+      <a href="#about">About Me</a>
+      <a href="#works">Works</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="content">
+      <h2>Designs that Speak, Stories that Last.</h2>
+      <h3>Transforming ideas into powerful visuals that speak without words</h3>
+      <p>A Visual Designer turning ideas into emotions.</p>
+      <button class="btn" id="viewWorkBtn">View My Work</button>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+  <img src="image/image/interior-home-decor-with-photo-frame.JPG" alt="Interior Home Decor" />
+  <div class="text">
+    <h2>MY NAME IS <span class="highlight">Niloufar Mokhtarian</span></h2>
+    <div class="badge">I’m a Graphic Designer, Digital Marketing Specialist, and Painter.</div>
+    <p>I combine creativity and strategy to design, promote, and bring ideas to life — both on canvas and across digital platforms.</p>
+
+    <!-- Skills section -->
+    <div class="skills-wrapper" style="margin-top: 30px;">
+      <h3 style="color: #f4d400; margin-bottom: 20px;">Skills</h3>
+      <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+
+        <div style="flex: 1 1 45%;">
+          <strong>Photoshop</strong>
+          <div class="skill-level" data-level="5"></div>
+        </div>
+
+        <div style="flex: 1 1 45%;">
+          <strong>Logo Design</strong>
+          <div class="skill-level" data-level="5"></div>
+        </div>
+
+        <div style="flex: 1 1 45%;">
+          <strong>Graphic Design</strong>
+          <div class="skill-level" data-level="5"></div>
+        </div>
+
+        <div style="flex: 1 1 45%;">
+          <strong>Adobe After Effects</strong>
+          <div class="skill-level" data-level="4"></div>
+        </div>
+
+        <div style="flex: 1 1 45%;">
+          <strong>Content Creation</strong>
+          <div class="skill-level" data-level="4"></div>
+        </div>
+
+        <div style="flex: 1 1 45%;">
+          <strong>Microsoft PowerPoint</strong>
+          <div class="skill-level" data-level="5"></div>
+        </div>
+
+        <div style="flex: 1 1 45%;">
+          <strong>Video & Photo Editing</strong>
+          <div class="skill-level" data-level="5"></div>
+        </div>
+
+        <div style="flex: 1 1 45%;">
+          <strong>Specialized Video Editing Software</strong>
+          <div class="skill-level" data-level="4"></div>
+        </div>
+
+        <div style="flex: 1 1 45%;">
+          <strong>Adobe Illustrator</strong>
+          <div class="skill-level" data-level="4"></div>
+        </div>
+
+        <div style="flex: 1 1 45%;">
+          <strong>Photography</strong>
+          <div class="skill-level" data-level="4"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Education section -->
+    <div class="education-wrapper" style="margin-top: 40px;">
+      <h3 style="color: #f4d400; margin-bottom: 20px;">Education</h3>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <div>
+          <p style="margin: 0; font-weight: bold;">Bachelor of Painting</p>
+          <p style="margin: 5px 0 0;">Tehran Technical(Dr. Shariati)</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .skill-level {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .skill-level > div {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #ddd;
+  }
+
+  .skill-level[data-level="1"] > div:nth-child(-n+1),
+  .skill-level[data-level="2"] > div:nth-child(-n+2),
+  .skill-level[data-level="3"] > div:nth-child(-n+3),
+  .skill-level[data-level="4"] > div:nth-child(-n+4),
+  .skill-level[data-level="5"] > div:nth-child(-n+5) {
+    background-color: #f4d400;
+  }
+</style>
+
+<script>
+  // Fill circles based on data-level attribute
+  document.querySelectorAll('.skill-level').forEach(container => {
+    const level = parseInt(container.getAttribute('data-level'));
+    container.innerHTML = '';
+    for (let i = 0; i < 5; i++) {
+      const circle = document.createElement('div');
+      circle.style.backgroundColor = i < level ? '#f4d400' : '#ddd';
+      container.appendChild(circle);
+    }
+  });
+</script>
+
+
+  <section class="gallery" id="works">
+    <h2>My Portfolio</h2>
+
+    <div class="tabs" role="tablist" aria-label="Portfolio categories">
+      <button class="tab-btn active" data-target="paintings" role="tab" aria-selected="true" aria-controls="paintings" id="tab-paintings">Paintings</button>
+      <button class="tab-btn" data-target="logos" role="tab" aria-selected="false" aria-controls="logos" id="tab-logos">Logos</button>
+      <button class="tab-btn" data-target="branding" role="tab" aria-selected="false" aria-controls="branding" id="tab-branding">Branding</button>
+    </div>
+
+    <div id="paintings" class="gallery-grid" role="tabpanel" aria-labelledby="tab-paintings">
+      <div class="category-title">Paintings</div>
+      <div class="gallery-item">
+        <img src="image/image/IMG_1294.JPG" alt="Oil Painting 1" />
+        <h3>Oil Painting</h3>
+      </div>
+            <div class="gallery-item">
+        <img src="image/image/IMG_1295.JPG" alt="Oil Painting 4" />
+        <h3>Oil Painting</h3>
+      </div>
+      <div class="gallery-item">
+        <img src="image/image/IMG_1292.JPG" alt="Oil Painting 2" />
+        <h3>Oil Painting</h3>
+      </div>
+      <div class="gallery-item">
+        <img src="image/image/IMG_1293.JPG" alt="Oil Painting 3" />
+        <h3>Oil Painting</h3>
+      </div>
+      <div class="gallery-item">
+<img src="image/image/IMG_1289.JPG" alt="Oil Painting" />
+        <h3>Oil Painting</h3>
+      </div>
+          <div class="gallery-item">
+<img src="image/image/IMG_1290.JPG" alt="Linoleum print" />
+        <h3>Linoleum print</h3>
+      </div>
+                <div class="gallery-item">
+<img src="image/image/IMG_1296.JPG" alt="Linoleum print" />
+        <h3>Monoprint</h3>
+    </div>
+                <div class="gallery-item">
+<img src="image/image/IMG_1297.JPG" alt="Linoleum print" />
+        <h3>Monoprint</h3>
+    </div>
+                <div class="gallery-item">
+<img src="image/image/IMG_1298.JPG" alt="Linoleum print" />
+        <h3>Etching</h3>
+    </div>
+                <div class="gallery-item">
+<img src="image/image/IMG_1299.JPG" alt="Linoleum print" />
+        <h3>Photomontage</h3>
+    </div>
+                    <div class="gallery-item">
+<img src="image/image/IMG_1300.JPG" alt="Linoleum print" />
+        <h3>Photomontage</h3>
+    </div>
+                        <div class="gallery-item">
+<img src="image/image/IMG_1301.JPG" alt="Linoleum print" />
+        <h3>Photomontage</h3>
+    </div>
+                            <div class="gallery-item">
+<img src="image/image/IMG_1302.JPG" alt="Linoleum print" />
+        <h3>Photomontage</h3>
+    </div>
+                                <div class="gallery-item">
+<img src="image/image/IMG_1303.JPG" alt="Linoleum print" />
+        <h3>Photomontage</h3>
+    </div>
+  <div class="gallery-item">
+<img src="image/image/IMG_1304.JPG" alt="Linoleum print" />
+        <h3>Photomontage</h3>
+    </div>
+    <div id="logos" class="gallery-grid" role="tabpanel" aria-labelledby="tab-logos" hidden>
+      <div class="category-title">Logos</div>
+      <div class="gallery-item">
+        <img src="image/image/Logo-1-1.jpg" alt="Logo 1" />
+        <h3>Logo Design</h3>
+      </div>
+      <div class="gallery-item">
+        <img src="image/image/logos/logo2.jpg" alt="Logo 2" />
+        <h3>Logo Design</h3>
+      </div>
+      <!-- اضافه کن بقیه لوگوها -->
+    </div>
+
+    <div id="branding" class="gallery-grid" role="tabpanel" aria-labelledby="tab-branding" hidden>
+      <div class="category-title">Branding</div>
+      <div class="gallery-item">
+        <img src="image/imageb/branding/brand1.jpg" alt="Branding 1" />
+        <h3>Branding Project</h3>
+      </div>
+      <div class="gallery-item">
+        <img src="image/image/branding/brand2.jpg" alt="Branding 2" />
+        <h3>Branding Project</h3>
+      </div>
+      <!-- اضافه کن بقیه پروژه ها -->
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h3>Contact Me</h3>
+    <p>Email: <a href="mailto:niloufar@example.com">n.mokhtarian78@gmail.com</a></p>
+    <p>Instagram: @Niloofar_m9</p>
+    <p></p>
+  </footer>
+
+  <script>
+    // Tab switching logic
+    const tabs = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('[role="tabpanel"]');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Deactivate all tabs
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        // Hide all panels
+        panels.forEach(panel => {
+          panel.hidden = true;
+        });
+        // Activate clicked tab
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        // Show related panel
+        const target = tab.getAttribute('data-target');
+        document.getElementById(target).hidden = false;
+      });
+    });
+
+    // Scroll to Works section on button click
+    document.getElementById('viewWorkBtn').addEventListener('click', () => {
+      document.getElementById('works').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+
+</html>
+>
